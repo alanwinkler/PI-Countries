@@ -1,0 +1,27 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+    background-image: url('./worldimage.png');
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.landing {
+  font-family: "Barlow Black";
+background-color: rgba(224, 217, 217, 0.5);
+color: black;
+}
+
+
+.link {
+    text-decoration: none;
+  color: #333;
+  font-size: 20px;
+  height: 100%;
+  display: flex;
+  place-content: center;
+}

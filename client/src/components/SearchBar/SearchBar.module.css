@@ -1,0 +1,25 @@
+.input {
+    font-family: 'Barlow Black';
+
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.button {
+    font-family: 'Barlow Black';
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.button:hover {
+    background-color: #444;
+}
