@@ -5,7 +5,7 @@ const createNewActivity = async (
   difficulty,
   duration,
   season,
-  countryId
+  countries
 ) => {
   const newActivity = await Activity.create({
     name,
@@ -13,7 +13,7 @@ const createNewActivity = async (
     duration,
     season,
   });
-  await newActivity.setCountries(countryId);
+  await newActivity.addCountry(countries); // newActivity.setCountries(countries)
   return newActivity;
 };
 

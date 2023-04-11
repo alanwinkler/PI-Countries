@@ -13,8 +13,8 @@ const getActivitiesHandler = async (req, res) => {
 
 const postActivityHandler = async (req, res) => {
   try {
-    const { name, difficulty, duration, season, countryId } = req.body;
-    const newActivity = await createNewActivity(name, difficulty, duration, season, countryId);
+    const { name, difficulty, duration, season, countries } = req.body;
+    const newActivity = await createNewActivity(name, difficulty, duration, season, countries);
     res.status(201).json(newActivity);
   } catch (error) {
     res.status(400).json({ error: error.message });
