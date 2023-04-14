@@ -10,7 +10,7 @@ const getApiData = async () => {
         name: country.name.common,
         flag: country.flags[0],
         continent: country.continents[0],
-        capital: country.capital ? country.capital : "No se encontró capital",
+        capital: country.capital ? country.capital[0] : "No se encontró capital",
         subregion: country.subregion
           ? country.subregion
           : "No se encontró subregión",

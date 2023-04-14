@@ -9,13 +9,7 @@ const getCountriesHandler = async (req, res) => {
     const { name } = req.query;
     if (name) {
       const countries = await getCountryByName(name);
-      // if (!countries.length) {
-      //   return res
-      //     .status(400)
-      //     .json({ msg: `El país ${name} no se encuentra en la base de datos` });
-      // } else {
-        return res.status(200).json(countries);
-      // }
+      return res.status(200).json(countries);
     } else {
       const allCountries = await getAllCountries();
       return res.status(200).json(allCountries);
@@ -29,7 +23,6 @@ const getCountryDetailHandler = async (req, res) => {
   try {
     const { id } = req.params;
     const country = await getCountryDetail(id);
-    console.log(country);
     if (!country)
       return res
         .status(400)

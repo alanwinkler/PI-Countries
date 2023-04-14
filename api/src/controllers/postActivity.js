@@ -13,6 +13,9 @@ const createNewActivity = async (
     duration,
     season,
   });
+  if (!countries) {
+    return "Debe incluir un país al menos";
+  }
   await newActivity.addCountry(countries); // newActivity.setCountries(countries)
   return newActivity;
 };
