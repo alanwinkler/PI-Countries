@@ -7,13 +7,12 @@ import styles from "./CardsContainer.module.css";
 const CardContainer = () => {
   const allCountries = useSelector((state) => state.countries);
   const [page, setPage] = useState(1);
+  
   const paginado = (page) => {
     setPage(page);
   };
 
   const countriesPerPage = 10;
-
-  // PASAR EL PAGINADO ACÁ OTRA VEZ PARA QUE FUNCIONE BIEN.
 
   const lastCountry = page * countriesPerPage;
   const firstCountry = lastCountry - countriesPerPage;

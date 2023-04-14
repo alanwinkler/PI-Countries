@@ -46,3 +46,39 @@
     outline: none;
     border: 2px solid #007bff;
   }
+
+   .list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkbox:checked {
+  background-color: #2196F3;
+  border-color: #2196F3;
+  color: #fff;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 500;
+} 

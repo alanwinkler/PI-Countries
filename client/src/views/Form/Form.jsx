@@ -7,7 +7,6 @@ import styles from "./Form.module.css";
 
 const Form = () => {
   const countries = useSelector((state) => state.countries);
-  // const countryDetail = useSelector((state) => state.detail);
 
   const dispatch = useDispatch(getCountries());
 
@@ -26,38 +25,35 @@ const Form = () => {
   const [errors, setErrors] = useState({});
 
   const changeHandler = (e) => {
-    // console.log(countries);
     const property = e.target.name;
     const value = e.target.value;
-    setErrors(validate({ ...form, [property]: value }));
-    setForm({
-      ...form,
-      [property]: value,
-    });
-  };
+    if (property === "country") {
+      console.log(form);
+      setErrors(validate({ ...form, countries: [...form.countries, value] }));
+      setForm({
+        ...form,
+        countries: [...form.countries, value],
+      });
+    } else {
+      setErrors(validate({ ...form, [property]: value }));
 
-  const changeCountriesHandler = (e) => {
-    // const property = e.target.name;
-    console.log(form);
-
-    const value = e.target.value;
-    console.log(value);
-    setErrors(validate({ ...form, countries:[...form.countries, value] }));
-    setForm({
-      ...form,
-      countries: [...form.countries, value],
-    });
+      setForm({
+        ...form,
+        [property]: value,
+      });
+    }
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // console.log(Object.values(errors))
+    console.log(Object.values(errors));
     if (Object.values(errors).length) {
       alert("Debe completar los datos necesarios");
+    } else {
+      axios
+        .post("http://localhost:3001/activities", form)
+        .then((res) => alert("Actividad creada"));
     }
-    axios
-      .post("http://localhost:3001/activities", form)
-      .then((res) => alert("Actividad creada"));
   };
 
   return (
@@ -108,38 +104,30 @@ const Form = () => {
       </div>
       <div className={styles.group}>
         <label className={styles.label}>Select countries: </label>
-        {/* <select
-          name="countries"
-          value={form.countries}
-          onChange={changeHandler}
-        > */}
-        <ul name="countries">
-          <li value="">
-            {countries.map((country) => {
-              return (
-                <div>
-                  <label name="country" key={country.id}>
-                    {country.name}
-                  </label>
-                  <input
-                    name="country"
-                    type="checkbox"
-                    value={country.id}
-                    onChange={changeCountriesHandler}
-                  ></input>
-                </div>
-              );
-            })}
-          </li>
-        </ul>
-        {/* <input
-          className={styles.input}
-          type="text"
-          value={form.countryId}
-          onChange={changeHandler}
-          name="countryId"
-        /> */}
       </div>
+      <div className={styles.list}>
+        {countries.map((country) => {
+          return (
+            <div className={styles.item} key={country.id}>
+              <input
+                className={styles.checkbox}
+                name="country"
+                type="checkbox"
+                value={country.id}
+                onChange={changeHandler}
+              ></input>
+              <label
+                className={styles.labelCountry}
+                name="country"
+                key={country.id}
+              >
+                {country.name}
+              </label>
+            </div>
+          );
+        })}
+      </div>
+
       <button className={styles.button} type="submit">
         CREATE ACTIVITY
       </button>

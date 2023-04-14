@@ -41,17 +41,40 @@ const Detail = () => {
         <div className={styles.detailLabel}>Población:</div>
         <div className={styles.detailValue}>{country.population}</div>
       </div>
+      <div className={styles.detailItem}>
+        <div className={styles.detailLabel}>Activities:</div>
+        <div className={styles.detailValue}>
+          <div>
+            {country.Activities ? (
+              country.Activities.map((activity) => {
+                return (
+                  <div className={styles.detailItem} key={activity.id}>
+                    <div className={styles.detailLabel}>Name: </div>
+
+                    <div className={styles.detailValue}>{activity.name}</div>
+                    <div className={styles.detailLabel}>Difficulty:</div>
+
+                    <div className={styles.detailValue}>
+                      {activity.difficulty}
+                    </div>
+                    <div className={styles.detailLabel}>Duration:</div>
+
+                    <div className={styles.detailValue}>
+                      {activity.duration}
+                    </div>
+                    <div className={styles.detailLabel}>Season:</div>
+
+                    <div className={styles.detailValue}>{activity.season}</div>
+                  </div>
+                );
+              })
+            ) : (
+              <div>No se han creado actividades</div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
-    // <div>
-    //   <p>{country.name}</p>
-    //   <p>{country.id}</p>
-    //   <img src={country.flag} alt="contry-flag" />
-    //   <p>Capital: {country.capital}</p>
-    //   <p>Continente: {country.continent}</p>
-    //   <p>Subregión: {country.subregion}</p>
-    //   <p>Área: {country.area} km²</p>
-    //   <p>Población: {country.population}</p>
-    // </div>
   );
 };
 

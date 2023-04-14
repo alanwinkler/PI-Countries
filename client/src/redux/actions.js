@@ -49,7 +49,6 @@ export const getCountryByName = (name) => {
       `http://localhost:3001/countries?name=${name}`
     );
     const country = apiData.data;
-    // console.log(country);
     dispatch({
       type: GET_COUNTRY_BY_NAME,
       payload: country,

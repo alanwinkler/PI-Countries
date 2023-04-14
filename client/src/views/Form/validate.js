@@ -1,4 +1,4 @@
-const validate = ({ name, difficulty, duration, season, countryId }) => {
+const validate = ({ name, difficulty, duration, season, countries }) => {
   let errors = {};
 
   if (!name) errors.name = "Campo Necesario";
@@ -14,8 +14,11 @@ const validate = ({ name, difficulty, duration, season, countryId }) => {
     errors.difficulty = "Debe ser entre 1 y 5";
 
   if (!season) errors.season = "Campo necesario";
-  // let seasonValidate = season.toLowerCase();
-  // if (countryId.length > 3) errors.countryId = "El ID debe ser de 3 caracteres";
+  else if (!/^(Primavera|Otoño|Invierno|Verano)$/.test(season)) {
+    errors.season = "Debe ser Primavera, Otoño, Invierno o Verano";
+  }
+  if (countries.length === 0) errors.countries = "Debe seleccionar un país";
+  console.log(countries);
   return errors;
 };
 

@@ -35,10 +35,12 @@ const rootReducer = (state = initialState, action) => {
         activities: action.payload,
       };
     case GET_COUNTRY_BY_NAME:
-      const filteredCountry = state.allCountries.filter(
+      const countries = state.allCountries;
+      console.log(action.payload);
+      const filteredCountry = countries.filter(
         (country) => country.name === action.payload[0].name
       );
-      const filtrado = !action.payload.length ? state.allCountries : filteredCountry;
+      const filtrado = action.payload[0].name === "" ? countries : filteredCountry;
       return {
         ...state,
         countries: filtrado,
