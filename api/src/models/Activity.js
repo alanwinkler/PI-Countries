@@ -24,6 +24,10 @@ const Activity = (sequelize) => {
         type: DataTypes.ENUM("Verano", "Otoño", "Invierno", "Primavera"),
         allowNull: false,
       },
+      comments: {
+        type: DataTypes.STRING,
+        
+      }
     },
     { timestamps: false }
   );

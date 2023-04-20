@@ -5,13 +5,15 @@ const createNewActivity = async (
   difficulty,
   duration,
   season,
-  countries
+  countries,
+  comments
 ) => {
   const newActivity = await Activity.create({
     name,
     difficulty,
     duration,
     season,
+    comments
   });
   if (!countries) {
     return "Debe incluir un país al menos";
